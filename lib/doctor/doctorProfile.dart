@@ -32,11 +32,11 @@ class _DoctorProfileState extends State<DoctorProfile> {
   }
 
   profileUpdate() {
-    Firestore.instance
+    FirebaseFirestore.instance
         .collection('docAbout')
-        .document(
+        .doc(
         widget.doctorDetails.userEmail)
-        .setData(
+        .set(
         {'about': controllerBio.text,
         'phone' : controllerPhone.text,
         'spec' : controllerSpec.text});
@@ -213,7 +213,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           ),
                           !aboutCheck
                               ? StreamBuilder(
-                                  stream: Firestore.instance.document('docAbout/${widget.doctorDetails.userEmail}').snapshots(),
+                                  stream: FirebaseFirestore.instance.doc('docAbout/${widget.doctorDetails.userEmail}').snapshots(),
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
@@ -279,7 +279,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           ),
                           !aboutCheck
                               ? StreamBuilder(
-                              stream: Firestore.instance.document('docAbout/${widget.doctorDetails.userEmail}').snapshots(),
+                              stream: FirebaseFirestore.instance.doc('docAbout/${widget.doctorDetails.userEmail}').snapshots(),
                               builder: (context, snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {
@@ -345,7 +345,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           ),
                           !aboutCheck
                               ? StreamBuilder(
-                              stream: Firestore.instance.document('docAbout/${widget.doctorDetails.userEmail}').snapshots(),
+                              stream: FirebaseFirestore.instance.doc('docAbout/${widget.doctorDetails.userEmail}').snapshots(),
                               builder: (context, snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {

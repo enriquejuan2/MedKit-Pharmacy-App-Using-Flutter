@@ -19,9 +19,9 @@ class DoctorPanel extends StatefulWidget {
 
 class _DoctorPanelState extends State<DoctorPanel> {
   Future getDiseaseInfo() async {
-    var firestore = Firestore.instance;
-    QuerySnapshot qn = await firestore.collection("Diseases").getDocuments();
-    return qn.documents;
+    var firestore = FirebaseFirestore.instance;
+    QuerySnapshot qn = await firestore.collection("Diseases").get();
+    return qn.docs;
   }
 
   final GoogleSignIn _gSignIn = GoogleSignIn();

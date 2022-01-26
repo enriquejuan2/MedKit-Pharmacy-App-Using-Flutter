@@ -123,10 +123,10 @@ class _AddDiseaseState extends State<AddDisease> {
     }
 
     addingDisease () {
-      Firestore.instance
+      FirebaseFirestore.instance
           .collection('Diseases')
-          .document(controllerDisName.text)
-          .setData({
+          .doc(controllerDisName.text)
+          .set({
         'disName': controllerDisName.text,
         'medName': controllerMedName.text,
         'medTime': controllerMedDose.text,

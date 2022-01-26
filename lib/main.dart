@@ -1,7 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medkit/doctor/addDisease.dart';
 import 'package:medkit/doctor/doctorLogin.dart';
 import 'package:medkit/otherWidgetsAndScreen/aboutUs.dart';
 import 'package:medkit/otherWidgetsAndScreen/category.dart';
@@ -10,26 +10,32 @@ import 'package:page_transition/page_transition.dart';
 
 import 'animations/fadeAnimation.dart';
 
-void main() => runApp(MedKitApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MedKitApp());
+}
 
 class MedKitApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown
-    ]);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp(
       theme: ThemeData(
         accentColor: Colors.black,
         primaryColor: Colors.black,
+        textTheme: GoogleFonts.latoTextTheme(
+          Theme.of(context)
+              .textTheme, // If this is not set, then ThemeData.light().textTheme is used.
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: WelcomeScreen(),
       routes: {
-        '/DoctorLogin' : (context) => DoctorLogin(),
-        '/PatientLogin' : (context) => PatientLogin(),
-        '/AboutUs' : (context) => AboutUs()
+        '/DoctorLogin': (context) => DoctorLogin(),
+        '/PatientLogin': (context) => PatientLogin(),
+        '/AboutUs': (context) => AboutUs()
       },
     );
   }
@@ -95,8 +101,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     _scaleController2 = AnimationController(
         vsync: this, duration: Duration(milliseconds: 1000));
 
-    _scale2Animation = Tween<double>(begin: 1.0, end: 32.0).animate(
-        _scaleController2)
+    _scale2Animation = Tween<double>(begin: 1.0, end: 32.0)
+        .animate(_scaleController2)
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           Navigator.push(context,
@@ -145,14 +151,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         1,
                         Text(
                           'MEDKIT',
-                          style: TextStyle(color: Colors.black, fontSize: height * 0.06),
+                          style: TextStyle(
+                              color: Colors.black, fontSize: height * 0.06),
                         )),
                     FadeAnimation(
                         1,
                         Text(
                           "Pharmacy in Your Hands!",
                           style: TextStyle(
-                              color: Colors.black.withOpacity(0.5), fontSize: height * 0.017),
+                              color: Colors.black.withOpacity(0.5),
+                              fontSize: height * 0.017),
                         )),
                     SizedBox(
                       height: height * 0.26,
@@ -184,31 +192,32 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                                           children: <Widget>[
                                             AnimatedBuilder(
                                               animation: _positionController,
-                                              builder: (context, child) => Positioned(
+                                              builder: (context, child) =>
+                                                  Positioned(
                                                 left: _positionAnimation.value,
                                                 child: AnimatedBuilder(
                                                   animation: _scaleController2,
                                                   builder: (context, child) =>
                                                       Transform.scale(
-                                                          scale: _scale2Animation
-                                                              .value,
+                                                          scale:
+                                                              _scale2Animation
+                                                                  .value,
                                                           child: Container(
                                                               width: 60,
                                                               height: 60,
-                                                              decoration:
-                                                              BoxDecoration(
-                                                                  color:
-                                                                  Colors
+                                                              decoration: BoxDecoration(
+                                                                  color: Colors
                                                                       .black,
                                                                   shape: BoxShape
                                                                       .circle),
-                                                              child: hideIcon == false
+                                                              child: hideIcon ==
+                                                                      false
                                                                   ? Icon(
-                                                                Icons
-                                                                    .arrow_forward,
-                                                                color: Colors
-                                                                    .white,
-                                                              )
+                                                                      Icons
+                                                                          .arrow_forward,
+                                                                      color: Colors
+                                                                          .white,
+                                                                    )
                                                                   : Container())),
                                                 ),
                                               ),
@@ -221,16 +230,21 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                                 ),
                               ),
                             )),
-                        SizedBox(height: height * 0.02,),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
                         FadeAnimation(
                             1,
                             Text(
-                              'Proceed!', textAlign: TextAlign.center,
+                              'Proceed!',
+                              textAlign: TextAlign.center,
                               style: GoogleFonts.openSans(fontSize: 20),
                             )),
                       ],
                     ),
-                    SizedBox(height: height * 0.02,)
+                    SizedBox(
+                      height: height * 0.02,
+                    )
                   ],
                 ),
               ),

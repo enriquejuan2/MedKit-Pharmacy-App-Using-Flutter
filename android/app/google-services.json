@@ -1,42 +1,115 @@
 {
   "project_info": {
-    "project_number": "832123427842",
-    "firebase_url": "https://medkit-ddc31.firebaseio.com",
-    "project_id": "medkit-ddc31",
-    "storage_bucket": "medkit-ddc31.appspot.com"
+    "project_number": "742213050673",
+    "project_id": "medtrit",
+    "storage_bucket": "medtrit.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:832123427842:android:88d72c400e10b6fc40db1b",
+        "mobilesdk_app_id": "1:742213050673:android:bc6a3db621aba6b4f89010",
         "android_client_info": {
-          "package_name": "com.example.medkit"
+          "package_name": "com.app.medtrit"
         }
       },
       "oauth_client": [
         {
-          "client_id": "832123427842-sq81v7s4opvt56ag4lkt4mf0da9p5gi9.apps.googleusercontent.com",
+          "client_id": "742213050673-9qpm2im6uegbho99puregtkqjeh1tgae.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.medkit",
-            "certificate_hash": "4b3e9a75e857fad6cafe279e707398fcc93261e8"
+            "package_name": "com.app.medtrit",
+            "certificate_hash": "a9f04c0c48a161e40c12cda15793dd1138f890d0"
           }
         },
         {
-          "client_id": "832123427842-98bkdle8ges05olopmtpjphtvgh775k1.apps.googleusercontent.com",
+          "client_id": "742213050673-tt6e2nu9a4tkfajaqptri89hsja6rsve.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD_yPz-uq7iHTXef6XLBfGt-ANdndCP_Wg"
+          "current_key": "AIzaSyBoa-L-Ap1MXpwVnjkIGV4eTc5-zyiwiz8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "832123427842-98bkdle8ges05olopmtpjphtvgh775k1.apps.googleusercontent.com",
+              "client_id": "742213050673-tt6e2nu9a4tkfajaqptri89hsja6rsve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742213050673:android:6c3f0cad7faddabdf89010",
+        "android_client_info": {
+          "package_name": "com.app.medtritdoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742213050673-ppim66fjp0pq8rbb2a9bdejhg58njbus.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.medtritdoctor",
+            "certificate_hash": "a9f04c0c48a161e40c12cda15793dd1138f890d0"
+          }
+        },
+        {
+          "client_id": "742213050673-tt6e2nu9a4tkfajaqptri89hsja6rsve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoa-L-Ap1MXpwVnjkIGV4eTc5-zyiwiz8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742213050673-tt6e2nu9a4tkfajaqptri89hsja6rsve.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742213050673:android:73e914c04b7d9382f89010",
+        "android_client_info": {
+          "package_name": "com.example.medkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742213050673-jedm64pv8klh9151cg2ibdgm5r1iv0tb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medkit",
+            "certificate_hash": "71d7e00d5748973ccc98c56e91ca1d2c286c129d"
+          }
+        },
+        {
+          "client_id": "742213050673-tt6e2nu9a4tkfajaqptri89hsja6rsve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoa-L-Ap1MXpwVnjkIGV4eTc5-zyiwiz8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742213050673-tt6e2nu9a4tkfajaqptri89hsja6rsve.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

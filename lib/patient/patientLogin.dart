@@ -12,28 +12,28 @@ class PatientLogin extends StatelessWidget {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = new GoogleSignIn();
 
-  Future<FirebaseUser> _signIn(BuildContext context) async {
+  Future<UserCredential> _signIn(BuildContext context) async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
+    final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
 
-    FirebaseUser userDetails =
+    UserCredential userDetails =
         await _firebaseAuth.signInWithCredential(credential);
     ProviderDoctorDetails providerInfo =
-        new ProviderDoctorDetails(userDetails.providerId);
+        new ProviderDoctorDetails(userDetails.user.providerData[0].providerId);
 
     List<ProviderDoctorDetails> providerData =
         new List<ProviderDoctorDetails>();
     providerData.add(providerInfo);
 
     PatientDetails details = new PatientDetails(
-      userDetails.providerId,
-      userDetails.displayName,
-      userDetails.photoUrl,
-      userDetails.email,
+      userDetails.user.providerData[0].providerId,
+      userDetails.user.displayName,
+      userDetails.user.photoURL,
+      userDetails.user.email,
       providerData,
     );
 

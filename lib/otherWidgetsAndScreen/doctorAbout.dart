@@ -19,9 +19,9 @@ class DoctorAbout extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             StreamBuilder(
-              stream: Firestore.instance
+              stream: FirebaseFirestore.instance
                   .collection('docAbout')
-                  .document(docEmail)
+                  .doc(docEmail)
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {

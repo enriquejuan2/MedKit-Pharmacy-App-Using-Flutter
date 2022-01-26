@@ -29,28 +29,28 @@ class _DoctorLoginState extends State<DoctorLogin> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = new GoogleSignIn();
 
-  Future<FirebaseUser> _signIn(BuildContext context) async {
+  Future<UserCredential> _signIn(BuildContext context) async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
+    final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
 
-    FirebaseUser userDetails =
+    UserCredential userDetails =
         await _firebaseAuth.signInWithCredential(credential);
     ProviderDoctorDetails providerInfo =
-        new ProviderDoctorDetails(userDetails.providerId);
+        new ProviderDoctorDetails(userDetails.user.providerData[0].providerId);
 
-    List<ProviderDoctorDetails> providerData =
-        new List<ProviderDoctorDetails>();
+    List<ProviderDoctorDetails> providerData =[];
+        
     providerData.add(providerInfo);
 
     DoctorDetails details = new DoctorDetails(
-      userDetails.providerId,
-      userDetails.displayName,
-      userDetails.photoUrl,
-      userDetails.email,
+      userDetails.user.providerData[0].providerId,
+      userDetails.user.displayName,
+      userDetails.user.photoURL,
+      userDetails.user.email,
       providerData,
     );
 
@@ -79,7 +79,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
 
   validateCNIC(String idNumber) {
     if(!(idNumber.length == 13) && idNumber.isNotEmpty) {
-      return "CNIC must be of 13-Digits";
+      return "ID Number must be of 13-Digits";
     }
     return null;
   }
@@ -115,20 +115,20 @@ class _DoctorLoginState extends State<DoctorLogin> {
           filled: true,
           errorText: validateCNIC(_controllerCNIC.text),
           fillColor: Colors.black.withOpacity(0.07),
-          labelText: 'NIC Number',
+          labelText: 'ID Number',
           prefixIcon: WidgetAnimator(Icon(Icons.credit_card)),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
     );
 
     getInfoAndLogin() {
-      Firestore.instance
+      FirebaseFirestore.instance
           .collection('doctorInfo')
-          .document(_controllerName.text)
-          .setData({
+          .doc(_controllerName.text)
+          .set({
         'cnic': _controllerCNIC.text,
       });
       _signIn(context)
-          .then((FirebaseUser user) =>
+          .then((UserCredential user) =>
           print('Gmail Logged In'))
           .catchError((e) => print(e));
       controllerClear();
@@ -142,7 +142,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
         }
       },
       child: Scaffold(
-          resizeToAvoidBottomPadding: false,
+          resizeToAvoidBottomInset: false,
           body: SafeArea(
             child: Container(
               width: width,

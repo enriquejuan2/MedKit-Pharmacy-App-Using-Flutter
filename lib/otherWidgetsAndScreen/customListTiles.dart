@@ -16,9 +16,9 @@ class CustomTile extends StatefulWidget {
 
 class _CustomTileState extends State<CustomTile> {
   _deleteDisease(BuildContext context) {
-    Firestore.instance
+    FirebaseFirestore.instance
         .collection('Diseases')
-        .document(widget.snapshot.data['disName'])
+        .doc(widget.snapshot['disName'])
         .delete();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => DeletingWait()));
@@ -55,7 +55,7 @@ class _CustomTileState extends State<CustomTile> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
-              widget.snapshot.data['disName'],
+              widget.snapshot['disName'],
               style: GoogleFonts.lato(fontSize: height * 0.03, letterSpacing: 2),
             ),
             FlatButton(

@@ -88,7 +88,7 @@ class _MedDetailsState extends State<MedDetails> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
-                              widget.snapshot.data['disName'],
+                              widget.snapshot['disName'],
                               style: GoogleFonts.abel(fontSize: height * 0.06),
                             ),
                             RaisedButton(
@@ -96,8 +96,8 @@ class _MedDetailsState extends State<MedDetails> {
                               shape: CircleBorder(),
                               onPressed: (){
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorAbout(
-                                  docEmail: widget.snapshot.data['docEmail'],
-                                  docName: widget.snapshot.data['post'],
+                                  docEmail: widget.snapshot['docEmail'],
+                                  docName: widget.snapshot['post'],
                                 )));
                               },
                               child: Icon(Icons.info, color: Colors.white, size: height * 0.05,),
@@ -114,7 +114,7 @@ class _MedDetailsState extends State<MedDetails> {
                               style: TextStyle(color: Colors.grey),
                             ),
                             Text(
-                              'Dr. ' + widget.snapshot.data['post'],
+                              'Dr. ' + widget.snapshot['post'],
                               style: TextStyle(
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold),
@@ -132,7 +132,7 @@ class _MedDetailsState extends State<MedDetails> {
                             ),
                             WidgetAnimator(
                               Text(
-                                widget.snapshot.data['medName'],
+                                widget.snapshot['medName'],
                                 style: GoogleFonts.averageSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize: height * 0.03),
@@ -151,7 +151,7 @@ class _MedDetailsState extends State<MedDetails> {
                             ),
                             WidgetAnimator(
                               Text(
-                                widget.snapshot.data['medTime'],
+                                widget.snapshot['medTime'],
                                 style: GoogleFonts.averageSans(
                                     fontWeight: FontWeight.bold,
                                     fontSize: height * 0.03),
@@ -172,7 +172,7 @@ class _MedDetailsState extends State<MedDetails> {
                             padding: EdgeInsets.symmetric(horizontal: 5),
                             children: <Widget>[
                               Text(
-                                widget.snapshot.data['medDesc'],
+                                widget.snapshot['medDesc'],
                                 style: TextStyle(height: 1.5, fontSize: 17),
                               ),
                             ],
